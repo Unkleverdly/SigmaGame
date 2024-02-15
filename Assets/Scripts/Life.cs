@@ -16,6 +16,11 @@ public class Life : MonoBehaviour
         UpdateText();
     }
 
+    private void OnValidate()
+    {
+        UpdateText();
+    }
+
     public void Wound()
     {
         life -= 1;

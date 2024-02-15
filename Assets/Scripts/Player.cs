@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 winCameraPosition;
     [SerializeField] private Vector3 maxSpeed;
     [SerializeField] private float speed = 20f;
+    [SerializeField] private float cameraSpeed = 20f;
 
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
@@ -27,16 +28,12 @@ public class Player : MonoBehaviour
     private int lastM = -1;
     private Rigidbody rb;
     private AudioSource source;
-    private Vector3 lastPos, lastMouse;
-
-    // private float lastInputX;
-    // private bool wasMoving;
+    private float lastTapX, lastSigmaPos;
 
     private void Awake()
     {
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        lastPos = transform.position;
     }
 
     void Update()
@@ -60,39 +57,39 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
+        if (!Game.Instance.Win)
         {
-            var ray = cam.ScreenPointToRay(Input.mousePosition);
+            var justPressed = Input.GetMouseButtonDown(0);
 
-            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, controlMask))
+            if (Input.GetMouseButton(0))
             {
-                var position = hit.point.x;
-                // if (!wasMoving) lastInputX = position;
-                // var delta = position - lastInputX;
-                // lastInputX = position;
+                var ray = cam.ScreenPointToRay(Input.mousePosition);
 
-                // var old = position;
-                var newPosition = Util.ClampedMap(position, leftBorder, rightBorder, leftBorder, rightBorder);
+                if (Physics.Raycast(ray, out var hit, Mathf.Infinity, controlMask))
+                {
+                    var position = hit.point.x;
+                    if (justPressed)
+                    {
+                        lastTapX = position;
+                        lastSigmaPos = mainSigma.transform.position.x;
+                    }
 
-                // Debug.Log($"hit: {position} calculated: {newPosition}");
+                    var newPosition = Util.ClampedMap(position - lastTapX + lastSigmaPos, leftBorder, rightBorder, leftBorder, rightBorder);
 
-                mainSigma.transform.SetX(Mathf.Lerp(mainSigma.transform.position.x, newPosition, maxSpeed.x * speed * Time.deltaTime));
+                    mainSigma.transform.SetX(Mathf.Lerp(mainSigma.transform.position.x, newPosition, maxSpeed.x * speed * Time.deltaTime));
+                }
             }
-            // wasMoving = true;
-        }
-        // else
-        // wasMoving = false;
 
-        cameraMover.transform.position += new Vector3(0, 0, transform.position.z - lastPos.z);
+            var sigmaPos = mainSigma.transform.position;
+
+            cameraMover.transform.position = Vector3.Lerp(cameraMover.transform.position, sigmaPos, Time.deltaTime * cameraSpeed);
+        }
 
         if (Game.Instance.EnemyCount <= 0 && !Game.Instance.Win)
         {
-            Win();
             Game.Instance.Win = true;
+            Win();
         }
-
-        lastPos = transform.position;
-        lastMouse = Input.mousePosition;
     }
 
     private void FixedUpdate()
@@ -145,7 +142,8 @@ public class Player : MonoBehaviour
     [ContextMenu("Test/Win")]
     public void Win()
     {
-        mainSigma.transform.position = new Vector3(0, 0, mainSigma.transform.position.z);
+        mainSigma.transform.SetZ(mainSigma.transform.position.z);
+        cameraMover.transform.SetX(0);
 
         source.Stop();
 
@@ -158,8 +156,10 @@ public class Player : MonoBehaviour
         backAudio.Stop();
         backAudio.PlayOneShot(playerWords.GetRandom());
 
-        cam.transform.position = mainSigma.transform.position + winCameraPosition;
+        cam.transform.position = Vector3.forward * mainSigma.transform.position.z + winCameraPosition;
         cam.transform.localEulerAngles = winCameraRotation;
+
+        cam.fieldOfView = 80;
 
         int animA = Random.Range(0, 3);
         int animB = Random.Range(0, 3);

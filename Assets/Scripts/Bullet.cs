@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private float startTime;
     private Vector3 startPosition;
 
-    private void Awake()
+    private void Start()
     {
         startTime = Time.time;
         startPosition = transform.position;
@@ -24,6 +24,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent<Life>(out var life))
             life.Wound();
+
+        if (other.TryGetComponent<Player>(out _))
+            return;
 
         Destroy(gameObject);
     }
