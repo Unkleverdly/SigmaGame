@@ -4,17 +4,18 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
     public int EnemyCount { get => enemyCount; set => enemyCount = value; }
-    public float BulletSpeed => initBulletSpeed + incrementedSpeed;
-    public float BulletShootSpeed => bulletShootingSpeed;
+    public float BulletSpeed => initBulletSpeed * incrementedSpeed;
+    public float BulletShootSpeed => bulletShootingSpeed / incrementedSpeed;
     public bool Win { get => win; set => win = value; }
 
-    [SerializeField] private float incrementedSpeed;
+    private float incrementedSpeed = 1;
+
     [SerializeField] private int enemyCount;
     [SerializeField] private bool win;
 
     [SerializeField] private float initBulletSpeed;
-    [SerializeField] private float bulletSpeedIncrement;
     [SerializeField] private float bulletShootingSpeed;
+    [Range(0, 1), SerializeField] private float bulletSpeedIncrement;
 
     public static Game Instance { get; private set; }
 
@@ -31,7 +32,7 @@ public class Game : MonoBehaviour
 
     public void SpeedUpBullets()
     {
-        incrementedSpeed += bulletSpeedIncrement;
+        incrementedSpeed *= 1 + bulletSpeedIncrement;
     }
 
     public void Restart()

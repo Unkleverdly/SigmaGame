@@ -385,8 +385,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129825175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
-  m_LocalScale: {x: 1.5999999, y: 1.5999999, z: 1.5999999}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1851291950}
@@ -965,7 +965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494444537}
   m_LocalRotation: {x: 0.20193262, y: 0, z: 0, w: 0.97939944}
-  m_LocalPosition: {x: 0, y: 10.55, z: -11.36}
+  m_LocalPosition: {x: 0, y: 15.2, z: -13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1643,8 +1643,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867738837}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
-  m_LocalScale: {x: 1.5999999, y: 1.5999999, z: 1.5999999}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 882442453}
@@ -3470,7 +3470,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 706075324}
   - {fileID: 765571676}
@@ -3632,12 +3632,12 @@ MonoBehaviour:
   - {fileID: 867738837}
   mainSigma: {fileID: 765571675}
   winCameraRotation: {x: 21, y: 180, z: 0}
-  winCameraPosition: {x: 0, y: 5.5, z: 7.5}
+  winCameraPosition: {x: 0, y: 5.5, z: 8}
   maxSpeed: {x: 0.5, y: 0, z: 8}
   speed: 20
   cameraSpeed: 20
-  leftBorder: -7
-  rightBorder: 7
+  leftBorder: -4
+  rightBorder: 4
   controlMask:
     serializedVersion: 2
     m_Bits: 64
@@ -3702,12 +3702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4009c3674b084bc4595f06c0b3738963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementedSpeed: 0
   enemyCount: 0
   win: 0
   initBulletSpeed: 20
-  bulletSpeedIncrement: 0.8
-  bulletShootingSpeed: 0.3
+  bulletShootingSpeed: 0.2
+  bulletSpeedIncrement: 0.1
 --- !u!4 &1916709378
 Transform:
   m_ObjectHideFlags: 0
@@ -5003,7 +5002,7 @@ Transform:
   m_GameObject: {fileID: 3724677323429895380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5999999, y: 1.5999999, z: 1.5999999}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8639960968434654098}

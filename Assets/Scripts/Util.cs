@@ -20,4 +20,8 @@ public static class Util
     public static void SetX(this Transform t, float x) => t.position = new(x, t.position.y, t.position.z);
     public static void SetY(this Transform t, float y) => t.position = new(t.position.x, y, t.position.z);
     public static void SetZ(this Transform t, float z) => t.position = new(t.position.x, t.position.y, z);
+
+    public static Vector3 WithX(this Vector3 v, float x) => new(x, v.y, v.z);
+    public static Vector3 WithY(this Vector3 v, float y) => new(v.x, y, v.z);
+    public static Vector3 WithZ(this Vector3 v, float z) => new(v.x, v.y, z);
 }

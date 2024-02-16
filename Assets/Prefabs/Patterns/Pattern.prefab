@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 26
+  m_text: 40
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 6163711236403989963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 69.3}
-  m_LocalScale: {x: 2.5, y: 2.6, z: 17.1}
+  m_LocalScale: {x: 1.5, y: 2.6, z: 17.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5294376002424924508}
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 35
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -694,7 +694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dec126842c4b2540b51d0eef346848b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dec126842c4b2540b51d0eef346848b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4b8c6085235fd4ea248229bb324b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 26
+  life: 40
   textMeshPro: {fileID: 7874223014202539654}
 --- !u!4 &1094010157390613946 stripped
 Transform:
@@ -877,6 +877,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5294376002424924508}
     m_Modifications:
+    - target: {fileID: 4796088082423050635, guid: d7f0eb0a8763ea94fa67ebfb5486e00d, type: 3}
+      propertyPath: m_text
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796088082982686557, guid: d7f0eb0a8763ea94fa67ebfb5486e00d, type: 3}
+      propertyPath: life
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4796088082982686558, guid: d7f0eb0a8763ea94fa67ebfb5486e00d, type: 3}
       propertyPath: source
       value: 
@@ -887,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4973550475231290282, guid: d7f0eb0a8763ea94fa67ebfb5486e00d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.7
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: 4973550475231290282, guid: d7f0eb0a8763ea94fa67ebfb5486e00d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -945,7 +953,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3368742457354856221, guid: 0ec81ee646502c34aa97dccbb05bf7ab, type: 3}
       propertyPath: m_text
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6040999682166078239, guid: 0ec81ee646502c34aa97dccbb05bf7ab, type: 3}
       propertyPath: m_RootOrder
@@ -997,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8601587287115502763, guid: 0ec81ee646502c34aa97dccbb05bf7ab, type: 3}
       propertyPath: life
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ec81ee646502c34aa97dccbb05bf7ab, type: 3}
@@ -1031,7 +1039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dec126842c4b2540b51d0eef346848b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2dec126842c4b2540b51d0eef346848b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1138,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4b8c6085235fd4ea248229bb324b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 9
+  life: 20
   textMeshPro: {fileID: 6795207381238700648}
 --- !u!4 &4130531095812094241 stripped
 Transform:
@@ -1166,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717349990092459053, guid: feef806993da88242b9268fe9e3809c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.9
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1717349990092459053, guid: feef806993da88242b9268fe9e3809c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1228,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 55412743621411067, guid: f901a418f1c91454fa1f364b58a68490, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 55412743621411067, guid: f901a418f1c91454fa1f364b58a68490, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1266,6 +1274,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 526469144200220288, guid: f901a418f1c91454fa1f364b58a68490, type: 3}
+      propertyPath: m_text
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 526469145367850440, guid: f901a418f1c91454fa1f364b58a68490, type: 3}
+      propertyPath: life
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 526469145367850442, guid: f901a418f1c91454fa1f364b58a68490, type: 3}
       propertyPath: source
       value: 
@@ -1302,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2335478182192739487, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 2335478182192739487, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1340,9 +1356,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2874405373504393619, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
+      propertyPath: life
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2874405373504393620, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
       propertyPath: BackMus
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874405374426917439, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
+      propertyPath: m_text
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3108215626736709157, guid: de74b3aab39995d45b1b287bf63831ed, type: 3}
       propertyPath: m_Name
@@ -1380,7 +1404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d09bbd0a60c508947b25eabce3d8d030, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 3.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d09bbd0a60c508947b25eabce3d8d030, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1498,7 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4b8c6085235fd4ea248229bb324b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 35
+  life: 50
   textMeshPro: {fileID: 298525724580938438}
 --- !u!114 &8821086527178135298
 MonoBehaviour:

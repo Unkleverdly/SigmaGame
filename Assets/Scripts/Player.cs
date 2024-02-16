@@ -74,13 +74,22 @@ public class Player : MonoBehaviour
                         lastSigmaPos = mainSigma.transform.position.x;
                     }
 
+                    var relative = position - lastTapX;
+
+
+                    if (relative < leftBorder || relative > rightBorder)
+                    {
+                        lastTapX = position;
+                        lastSigmaPos = mainSigma.transform.position.x;
+                    }
+
                     var newPosition = Util.ClampedMap(position - lastTapX + lastSigmaPos, leftBorder, rightBorder, leftBorder, rightBorder);
 
                     mainSigma.transform.SetX(Mathf.Lerp(mainSigma.transform.position.x, newPosition, maxSpeed.x * speed * Time.deltaTime));
                 }
             }
 
-            var sigmaPos = mainSigma.transform.position;
+            var sigmaPos = mainSigma.transform.position.WithX(0);
 
             cameraMover.transform.position = Vector3.Lerp(cameraMover.transform.position, sigmaPos, Time.deltaTime * cameraSpeed);
         }
@@ -159,7 +168,7 @@ public class Player : MonoBehaviour
         cam.transform.position = Vector3.forward * mainSigma.transform.position.z + winCameraPosition;
         cam.transform.localEulerAngles = winCameraRotation;
 
-        cam.fieldOfView = 80;
+        cam.fieldOfView = 95;
 
         int animA = Random.Range(0, 3);
         int animB = Random.Range(0, 3);
