@@ -3,16 +3,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
+    public AudioSource SoundSource => soundSource;
+
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject cameraMover;
-    [SerializeField] private AudioClip[] audioClips;
-    [SerializeField] private AudioClip[] winMusics;
     [SerializeField] private Animator[] animators;
     [SerializeField] private GameObject[] guns;
-    [SerializeField] private GameObject backMusic;
-    [SerializeField] private AudioClip[] playerWords;
     [SerializeField] private GameObject[] sigmas;
     [SerializeField] private GameObject mainSigma;
+    [SerializeField] private AudioSource soundSource;
+    [SerializeField] private AudioSource musicSource;
 
     [SerializeField] private Vector3 winCameraRotation;
     [SerializeField] private Vector3 winCameraPosition;
@@ -27,33 +29,35 @@ public class Player : MonoBehaviour
 
     private int lastM = -1;
     private Rigidbody rb;
-    private AudioSource source;
     private float lastTapX, lastSigmaPos;
+    private bool won;
 
     private void Awake()
     {
-        source = GetComponent<AudioSource>();
+        Instance = this;
+
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (!source.isPlaying)
+        if (!musicSource.isPlaying)
         {
             if (Game.Instance.Win)
             {
-                int m = Random.Range(0, winMusics.Length);
+                var winMusic = ContentManager.Instance.WinMusic;
+                int m = Random.Range(0, winMusic.Count);
                 while (m == lastM)
                 {
-                    m = Random.Range(0, winMusics.Length);
+                    m = Random.Range(0, winMusic.Count);
                 }
                 lastM = m;
-                source.volume = 1;
-                source.PlayOneShot(winMusics[m]);
+                musicSource.volume = 1;
+                musicSource.PlayOneShot(winMusic[m]);
             }
             else
             {
-                source.PlayOneShot(audioClips.GetRandom());
+                musicSource.PlayOneShot(ContentManager.Instance.BackgroundMusic.GetRandom());
             }
         }
 
@@ -94,11 +98,8 @@ public class Player : MonoBehaviour
             cameraMover.transform.position = Vector3.Lerp(cameraMover.transform.position, sigmaPos, Time.deltaTime * cameraSpeed);
         }
 
-        if (Game.Instance.EnemyCount <= 0 && !Game.Instance.Win)
-        {
-            Game.Instance.Win = true;
+        if (!won && Game.Instance.Win)
             Win();
-        }
     }
 
     private void FixedUpdate()
@@ -108,23 +109,19 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemies>(out _))
+        if (other.TryGetComponent<Enemy>(out _))
             Death();
 
         if (other.TryGetComponent<TakeGun>(out _))
         {
             foreach (var gun in guns)
                 gun.SetActive(true);
-
-            backMusic.GetComponent<AudioSource>().Play();
         }
 
         if (other.TryGetComponent<Hostage>(out _))
         {
             foreach (GameObject obj in sigmas)
                 obj.SetActive(true);
-
-            backMusic.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -151,19 +148,18 @@ public class Player : MonoBehaviour
     [ContextMenu("Test/Win")]
     public void Win()
     {
-        mainSigma.transform.SetZ(mainSigma.transform.position.z);
+        won = true;
+        mainSigma.transform.SetX(0);
         cameraMover.transform.SetX(0);
 
-        source.Stop();
+        musicSource.Stop();
 
-        int m = Random.Range(0, winMusics.Length);
+        var winMusic = ContentManager.Instance.WinMusic;
+        int m = Random.Range(0, winMusic.Count);
         lastM = m;
-        source.PlayOneShot(winMusics[m]);
+        musicSource.PlayOneShot(winMusic[m]);
 
-        var backAudio = backMusic.GetComponent<AudioSource>();
-
-        backAudio.Stop();
-        backAudio.PlayOneShot(playerWords.GetRandom());
+        SoundSource.PlayOneShot(ContentManager.Instance.WinSounds.GetRandom());
 
         cam.transform.position = Vector3.forward * mainSigma.transform.position.z + winCameraPosition;
         cam.transform.localEulerAngles = winCameraRotation;

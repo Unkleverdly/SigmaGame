@@ -4,6 +4,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
+
     private float timeLeft;
 
     private void Start()
