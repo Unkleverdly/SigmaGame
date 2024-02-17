@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Life>(out var life))
+        if (other.TryGetComponent(out Life life))
             life.Wound();
 
         if (other.TryGetComponent<Player>(out _))

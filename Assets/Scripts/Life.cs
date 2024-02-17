@@ -26,7 +26,7 @@ public class Life : MonoBehaviour
         life -= 1;
         if (life <= 0)
         {
-            if (TryGetComponent<IDamageble>(out var damageble))
+            if (TryGetComponent(out IDamageble damageble))
                 damageble.Die();
 
             Destroy(gameObject);

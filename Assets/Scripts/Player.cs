@@ -111,18 +111,19 @@ public class Player : MonoBehaviour
     {
         if (other.TryGetComponent<Enemy>(out _))
             Death();
+    }
 
-        if (other.TryGetComponent<TakeGun>(out _))
-        {
-            foreach (var gun in guns)
-                gun.SetActive(true);
-        }
+    public void GetGun()
+    {
+        foreach (var gun in guns)
+            gun.SetActive(true);
+    }
 
-        if (other.TryGetComponent<Hostage>(out _))
-        {
-            foreach (GameObject obj in sigmas)
-                obj.SetActive(true);
-        }
+    public void GetSigmas()
+    {
+        foreach (GameObject obj in sigmas)
+            obj.SetActive(true);
+
     }
 
     private void Death()

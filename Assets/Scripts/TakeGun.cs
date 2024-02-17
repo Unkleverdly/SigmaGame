@@ -11,6 +11,10 @@ public class TakeGun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.TryGetComponent(out Player p))
+        {
+            p.GetGun();
+            Destroy(gameObject);
+        }
     }
 }

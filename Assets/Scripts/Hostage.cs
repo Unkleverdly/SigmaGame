@@ -11,7 +11,11 @@ public class Hostage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player.Instance.SoundSource.PlayOneShot(ContentManager.Instance.PickUpSounds.GetRandom());
-        Destroy(gameObject);
+        if (other.TryGetComponent(out Player p))
+        {
+            p.GetSigmas();
+            Player.Instance.SoundSource.PlayOneShot(ContentManager.Instance.PickUpSounds.GetRandom());
+            Destroy(gameObject);
+        }
     }
 }
